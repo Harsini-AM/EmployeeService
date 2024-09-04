@@ -16,10 +16,10 @@ import com.example.EmployeeService.ServletInitializer;
 
 import static org.junit.jupiter.api.Assertions.*;
  
-class ServletInitializerTest {
+public class ServletInitializerTest {
  
     @Test
-    void testConfigure() {
+    public void testConfigure() {
         // Arrange
         ServletInitializer servletInitializer = new ServletInitializer();
  
