@@ -374,8 +374,7 @@ class EmployeeControllerTest {
 
         ResponseEntity<?> response = employeeController.depromoteEmployee(id, newData);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Depromotion successful!", response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());assertEquals("Depromotion successful!", response.getBody());
     }
     
 
