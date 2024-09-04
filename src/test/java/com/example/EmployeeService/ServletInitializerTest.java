@@ -16,7 +16,7 @@ class ServletInitializerTest {
         SpringApplicationBuilder builder = servletInitializer.configure(new SpringApplicationBuilder());
         
         // Check that the builder is not null
-        assertNotNull(builder)
+        assertNotNull(builder);
 	}
 
 }
