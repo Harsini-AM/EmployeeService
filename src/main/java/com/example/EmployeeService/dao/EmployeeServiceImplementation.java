@@ -77,7 +77,7 @@ public class EmployeeServiceImplementation{
             }
             return rep;
         } catch (Exception e) {
-            throw new RuntimeException("An unexpected error occurred while fetching the representative", e);
+            throw new RuntimeException("An unexpected error occurred while fetching the representative details", e);
         }
     }
 	
