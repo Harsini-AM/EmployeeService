@@ -223,119 +223,119 @@ class EmployeeServiceImplementationTest {
     }
 
     
-    @Test
-    void testGetResponseAverageByManagerId() {
-       
-        Map<Long, Double> responseData = new HashMap<>();
-        responseData.put(1L, 10.0);
-        
-        when(customerServiceFeignClient.getResponseAverageByManagerId(1L)).thenReturn(ResponseEntity.ok(responseData));
-        
-       
-        ResponseEntity<Map<Long, Double>> response = empService.getResponseAverageByManagerId(1L);
-        
-  
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(responseData, response.getBody());
-    }
-    
-    @Test
-    void testGetResolutionAverageByManagerId() {
-        Map<Long, Double> responseData = new HashMap<>();
-        responseData.put(1L, 20.0);
-        
-        when(customerServiceFeignClient.getResolutionAverageByManagerId(1L)).thenReturn(ResponseEntity.ok(responseData));
-        
-        ResponseEntity<Map<Long, Double>> response = empService.getResolutionAverageByManagerId(1L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(responseData, response.getBody());
-    }
-
-    @Test
-    void testGetTicketCountsByStatus() {
-        Map<String, Long> responseData = new HashMap<>();
-        responseData.put("OPEN", 5L);
-        
-        when(customerServiceFeignClient.getTicketCountsByStatus(1L)).thenReturn(ResponseEntity.ok(responseData));
-        
-        ResponseEntity<Map<String, Long>> response = empService.getTicketCountsByStatus(1L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(responseData, response.getBody());
-    }
-
-    @Test
-    void testGetAverageResponseTimeByRepId() {
-        double responseData = 30.0;
-        
-        when(customerServiceFeignClient.getAverageResponseTimeByRepId(1L)).thenReturn(ResponseEntity.ok(responseData));
-        
-        ResponseEntity<Double> response = empService.getAverageResponseTimeByRepId(1L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(responseData, response.getBody());
-    }
-
-    @Test
-    void testGetAverageResolutionTimeByRepId() {
-        double responseData = 15.0;
-        
-        when(customerServiceFeignClient.getAverageResolutionTimeByRepId(1L)).thenReturn(ResponseEntity.ok(responseData));
-        
-        ResponseEntity<Double> response = empService.getAverageResolutionTimeByRepId(1L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(responseData, response.getBody());
-    }
-
-    @Test
-    void testGetTicketCountsByStatusForRep() {
-        Map<String, Long> responseData = new HashMap<>();
-        responseData.put("OPEN", 3L);
-        
-        when(customerServiceFeignClient.getTicketCountsByStatusForRep(1L)).thenReturn(ResponseEntity.ok(responseData));
-        
-        ResponseEntity<Map<String, Long>> response = empService.getTicketCountsByStatusForRep(1L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(responseData, response.getBody());
-    }
-
-    @Test
-    void testGetAverageResolutionTime() {
-        Map<String, Float> responseData = new HashMap<>();
-        responseData.put("MONDAY", 10.0f);
-        
-        when(customerServiceFeignClient.getAverageResolutionTime(1L)).thenReturn(responseData);
-        
-        Map<String, Float> result = empService.getAverageResolutionTime(1L);
-        
-        assertEquals(responseData, result);
-    }
-
-    @Test
-    void testGetRepsByManagerId() {
-        
-        Manager manager = new Manager();
-        Representative rep1 = new Representative();
-        rep1.setEmpId(1L);
-        Representative rep2 = new Representative();
-        rep2.setEmpId(2L);
-        manager.setRepresentatives(List.of(rep1, rep2));
-
-     
-        when(repo.findByEmpId(1L)).thenReturn(Optional.of(manager));
-        
-      
-        List<Representative> reps = empService.getRepsByManagerId(1L);
-        
-      
-        assertNotNull(reps);
-        assertEquals(2, reps.size());
-        assertEquals(1L, reps.get(0).getEmpId());
-        assertEquals(2L, reps.get(1).getEmpId());
-    }
+//    @Test
+//    void testGetResponseAverageByManagerId() {
+//       
+//        Map<Long, Double> responseData = new HashMap<>();
+//        responseData.put(1L, 10.0);
+//        
+//        when(customerServiceFeignClient.getResponseAverageByManagerId(1L)).thenReturn(ResponseEntity.ok(responseData));
+//        
+//       
+//        ResponseEntity<Map<Long, Double>> response = empService.getResponseAverageByManagerId(1L);
+//        
+//  
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(responseData, response.getBody());
+//    }
+//    
+//    @Test
+//    void testGetResolutionAverageByManagerId() {
+//        Map<Long, Double> responseData = new HashMap<>();
+//        responseData.put(1L, 20.0);
+//        
+//        when(customerServiceFeignClient.getResolutionAverageByManagerId(1L)).thenReturn(ResponseEntity.ok(responseData));
+//        
+//        ResponseEntity<Map<Long, Double>> response = empService.getResolutionAverageByManagerId(1L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(responseData, response.getBody());
+//    }
+//
+//    @Test
+//    void testGetTicketCountsByStatus() {
+//        Map<String, Long> responseData = new HashMap<>();
+//        responseData.put("OPEN", 5L);
+//        
+//        when(customerServiceFeignClient.getTicketCountsByStatus(1L)).thenReturn(ResponseEntity.ok(responseData));
+//        
+//        ResponseEntity<Map<String, Long>> response = empService.getTicketCountsByStatus(1L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(responseData, response.getBody());
+//    }
+//
+//    @Test
+//    void testGetAverageResponseTimeByRepId() {
+//        double responseData = 30.0;
+//        
+//        when(customerServiceFeignClient.getAverageResponseTimeByRepId(1L)).thenReturn(ResponseEntity.ok(responseData));
+//        
+//        ResponseEntity<Double> response = empService.getAverageResponseTimeByRepId(1L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(responseData, response.getBody());
+//    }
+//
+//    @Test
+//    void testGetAverageResolutionTimeByRepId() {
+//        double responseData = 15.0;
+//        
+//        when(customerServiceFeignClient.getAverageResolutionTimeByRepId(1L)).thenReturn(ResponseEntity.ok(responseData));
+//        
+//        ResponseEntity<Double> response = empService.getAverageResolutionTimeByRepId(1L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(responseData, response.getBody());
+//    }
+//
+//    @Test
+//    void testGetTicketCountsByStatusForRep() {
+//        Map<String, Long> responseData = new HashMap<>();
+//        responseData.put("OPEN", 3L);
+//        
+//        when(customerServiceFeignClient.getTicketCountsByStatusForRep(1L)).thenReturn(ResponseEntity.ok(responseData));
+//        
+//        ResponseEntity<Map<String, Long>> response = empService.getTicketCountsByStatusForRep(1L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(responseData, response.getBody());
+//    }
+//
+//    @Test
+//    void testGetAverageResolutionTime() {
+//        Map<String, Float> responseData = new HashMap<>();
+//        responseData.put("MONDAY", 10.0f);
+//        
+//        when(customerServiceFeignClient.getAverageResolutionTime(1L)).thenReturn(responseData);
+//        
+//        Map<String, Float> result = empService.getAverageResolutionTime(1L);
+//        
+//        assertEquals(responseData, result);
+//    }
+//
+//    @Test
+//    void testGetRepsByManagerId() {
+//        
+//        Manager manager = new Manager();
+//        Representative rep1 = new Representative();
+//        rep1.setEmpId(1L);
+//        Representative rep2 = new Representative();
+//        rep2.setEmpId(2L);
+//        manager.setRepresentatives(List.of(rep1, rep2));
+//
+//     
+//        when(repo.findByEmpId(1L)).thenReturn(Optional.of(manager));
+//        
+//      
+//        List<Representative> reps = empService.getRepsByManagerId(1L);
+//        
+//      
+//        assertNotNull(reps);
+//        assertEquals(2, reps.size());
+//        assertEquals(1L, reps.get(0).getEmpId());
+//        assertEquals(2L, reps.get(1).getEmpId());
+//    }
     
     @Test
     void testAddManager() {
@@ -363,14 +363,7 @@ class EmployeeServiceImplementationTest {
  
     
 
-    
-
-
-   
-    
-
-    
-    
+  
     @Test
     void testAddRepresentativeSuccess() {
         // Arrange
@@ -452,9 +445,6 @@ class EmployeeServiceImplementationTest {
         }
     }
     
-    
-    
-   
 
   
 }

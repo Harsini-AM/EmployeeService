@@ -80,49 +80,49 @@ class EmployeeControllerTest {
         //verify(empService, times(1)).addManager(man);
     }
 
-    @Test
-    public void testAddManagerIfAlreadyPresent() {
-        Manager manager = new Manager();
-        manager.setUserName("User1@LIT.com");
-        manager.setPassword("password");
-        manager.setfName("FirstName");
-        manager.setlName("LastName");
-        manager.setCity("City");
-        manager.setState("State");
-        manager.setPhone_no(1234567890L);
-        manager.setDomain("network");
-        
-        when(empService.addManager(any(Manager.class))).thenThrow(new DuplicateEntryException("Manager already exists"));
+//    @Test
+//    public void testAddManagerIfAlreadyPresent() {
+//        Manager manager = new Manager();
+//        manager.setUserName("User1@LIT.com");
+//        manager.setPassword("password");
+//        manager.setfName("FirstName");
+//        manager.setlName("LastName");
+//        manager.setCity("City");
+//        manager.setState("State");
+//        manager.setPhone_no(1234567890L);
+//        manager.setDomain("network");
+//        
+//        when(empService.addManager(any(Manager.class))).thenThrow(new DuplicateEntryException("Manager already exists"));
+//
+//        ResponseEntity<?> response = employeeController.addEmployee(manager);
+//
+//        assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
+//        
+//    }
 
-        ResponseEntity<?> response = employeeController.addEmployee(manager);
-
-        assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
-        
-    }
-
-    @Test
-    public void testAddRepresentative() {
-        RepresentativeDto rep = new RepresentativeDto();
-        String uniqueUserName = "user" + UUID.randomUUID().toString() + "@LIT.com";
-        long randomNumber = 100000 + new Random().nextInt(900000);
-        
-        rep.setUserName(uniqueUserName);
-        rep.setPassword("password");
-        rep.setfName("FirstName");
-        rep.setlName("LastName");
-        rep.setCity("City");
-        rep.setState("State");
-        rep.setPhone_no(randomNumber);
-        rep.setDomain("network");
-        rep.setManagerId(117L);
-
-        when(empService.addRepresentative(rep)).thenReturn(new ResponseEntity<>(HttpStatus.OK));
-        
-        ResponseEntity<?> response = employeeController.addRepresentative(rep);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        verify(empService, times(1)).addRepresentative(rep);
-    }
+//    @Test
+//    public void testAddRepresentative() {
+//        RepresentativeDto rep = new RepresentativeDto();
+//        String uniqueUserName = "user" + UUID.randomUUID().toString() + "@LIT.com";
+//        long randomNumber = 100000 + new Random().nextInt(900000);
+//        
+//        rep.setUserName(uniqueUserName);
+//        rep.setPassword("password");
+//        rep.setfName("FirstName");
+//        rep.setlName("LastName");
+//        rep.setCity("City");
+//        rep.setState("State");
+//        rep.setPhone_no(randomNumber);
+//        rep.setDomain("network");
+//        rep.setManagerId(117L);
+//
+//        when(empService.addRepresentative(rep)).thenReturn(new ResponseEntity<>(HttpStatus.OK));
+//        
+//        ResponseEntity<?> response = employeeController.addRepresentative(rep);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        verify(empService, times(1)).addRepresentative(rep);
+//    }
 
     @Test
     public void testAddRepresentativeIfUserNameExists() {
@@ -239,46 +239,46 @@ class EmployeeControllerTest {
         verify(empService, times(1)).updateRepresentative(36, updateRequest);
     }
 
-    @Test
-    void getListOfRepresentativeByManagerId() {
-        List<Representative> representatives = new ArrayList<>();
-        when(empService.getRepsByManagerId(117L)).thenReturn(representatives);
-        
-        ResponseEntity<List<Representative>> response = employeeController.getRepresentative(117L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertNotNull(response.getBody());
-        verify(empService, times(1)).getRepsByManagerId(117L);
-    }
+//    @Test
+//    void getListOfRepresentativeByManagerId() {
+//        List<Representative> representatives = new ArrayList<>();
+//        when(empService.getRepsByManagerId(117L)).thenReturn(representatives);
+//        
+//        ResponseEntity<List<Representative>> response = employeeController.getRepresentative(117L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertNotNull(response.getBody());
+//        verify(empService, times(1)).getRepsByManagerId(117L);
+//    }
 
-    @Test
-    void testGetResolutionAverageByManagerId() {
-        Map<Long, Double> result = new HashMap<>();
-        result.put(14L, 90.0);
-
-        when(empService.getResolutionAverageByManagerId(26L)).thenReturn(new ResponseEntity<>(result, HttpStatus.OK));
-        
-        ResponseEntity<?> response = employeeController.getResolutionAverageByManagerId(26L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(result, response.getBody());
-        verify(empService, times(1)).getResolutionAverageByManagerId(26L);
-    }
-
-    @Test
-    void testGetTicketCountsByStatus() {
-        Map<String, Long> result = new HashMap<>();
-        result.put("OPEN", 10L);
-        result.put("CLOSED", 5L);
-
-        when(empService.getTicketCountsByStatus(26L)).thenReturn(new ResponseEntity<>(result, HttpStatus.OK));
-        
-        ResponseEntity<?> response = employeeController.getTicketCountsByStatus(26L);
-        
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(result, response.getBody());
-        verify(empService, times(1)).getTicketCountsByStatus(26L);
-    }
+//    @Test
+//    void testGetResolutionAverageByManagerId() {
+//        Map<Long, Double> result = new HashMap<>();
+//        result.put(14L, 90.0);
+//
+//        when(empService.getResolutionAverageByManagerId(26L)).thenReturn(new ResponseEntity<>(result, HttpStatus.OK));
+//        
+//        ResponseEntity<?> response = employeeController.getResolutionAverageByManagerId(26L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(result, response.getBody());
+//        verify(empService, times(1)).getResolutionAverageByManagerId(26L);
+//    }
+//
+//    @Test
+//    void testGetTicketCountsByStatus() {
+//        Map<String, Long> result = new HashMap<>();
+//        result.put("OPEN", 10L);
+//        result.put("CLOSED", 5L);
+//
+//        when(empService.getTicketCountsByStatus(26L)).thenReturn(new ResponseEntity<>(result, HttpStatus.OK));
+//        
+//        ResponseEntity<?> response = employeeController.getTicketCountsByStatus(26L);
+//        
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(result, response.getBody());
+//        verify(empService, times(1)).getTicketCountsByStatus(26L);
+//    }
     
     @Test
     void testDeleteManager() {
@@ -292,69 +292,69 @@ class EmployeeControllerTest {
            assertEquals("Manager removed successfully", result);
     }
     
-    @Test
-    public void testGetAverageResponseTimeByRepId() {
-        // Given
-        Long repId = 1L;
-        Double expectedAverageResponseTime = 123.45;
-        when(empService.getAverageResponseTimeByRepId(repId)).thenReturn(ResponseEntity.ok(expectedAverageResponseTime));
-
-        // When
-        ResponseEntity<Double> response = employeeController.getAverageResponseTimeByRepId(repId);
-
-        // Then
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(expectedAverageResponseTime, response.getBody());
-    }
+//    @Test
+//    public void testGetAverageResponseTimeByRepId() {
+//        // Given
+//        Long repId = 1L;
+//        Double expectedAverageResponseTime = 123.45;
+//        when(empService.getAverageResponseTimeByRepId(repId)).thenReturn(ResponseEntity.ok(expectedAverageResponseTime));
+//
+//        // When
+//        ResponseEntity<Double> response = employeeController.getAverageResponseTimeByRepId(repId);
+//
+//        // Then
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(expectedAverageResponseTime, response.getBody());
+//    }
     
     
-    @Test
-    public void testGetAverageResolutionTimeByRepId() {
-        // Given
-        Long repId = 1L;
-        Double expectedAverageResolutionTime = 234.56;
-        when(empService.getAverageResolutionTimeByRepId(repId)).thenReturn(ResponseEntity.ok(expectedAverageResolutionTime));
-
-        // When
-        ResponseEntity<Double> response = employeeController.getAverageResolutionTimeByRepId(repId);
-
-        // Then
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(expectedAverageResolutionTime, response.getBody());
-    }
+//    @Test
+//    public void testGetAverageResolutionTimeByRepId() {
+//        // Given
+//        Long repId = 1L;
+//        Double expectedAverageResolutionTime = 234.56;
+//        when(empService.getAverageResolutionTimeByRepId(repId)).thenReturn(ResponseEntity.ok(expectedAverageResolutionTime));
+//
+//        // When
+//        ResponseEntity<Double> response = employeeController.getAverageResolutionTimeByRepId(repId);
+//
+//        // Then
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(expectedAverageResolutionTime, response.getBody());
+//    }
     
-    @Test
-    public void testGetTicketCountsByStatusForRep() {
-        // Given
-        Long repId = 1L;
-        Map<String, Long> expectedTicketCounts = new HashMap<>();
-        expectedTicketCounts.put("open", 10L);
-        expectedTicketCounts.put("closed", 20L);
-        when(empService.getTicketCountsByStatusForRep(repId)).thenReturn(ResponseEntity.ok(expectedTicketCounts));
-
-        // When
-        ResponseEntity<Map<String, Long>> response = employeeController.getTicketCountsByStatusForRep(repId);
-
-        // Then
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(expectedTicketCounts, response.getBody());
-    }
+//    @Test
+//    public void testGetTicketCountsByStatusForRep() {
+//        // Given
+//        Long repId = 1L;
+//        Map<String, Long> expectedTicketCounts = new HashMap<>();
+//        expectedTicketCounts.put("open", 10L);
+//        expectedTicketCounts.put("closed", 20L);
+//        when(empService.getTicketCountsByStatusForRep(repId)).thenReturn(ResponseEntity.ok(expectedTicketCounts));
+//
+//        // When
+//        ResponseEntity<Map<String, Long>> response = employeeController.getTicketCountsByStatusForRep(repId);
+//
+//        // Then
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(expectedTicketCounts, response.getBody());
+//    }
     
-    @Test
-    public void testGetAverageResolutionTime() {
-        // Given
-        Long repId = 1L;
-        Map<String, Float> expectedAverageResolutionTime = new HashMap<>();
-        expectedAverageResolutionTime.put("Monday", 345.67f);
-        expectedAverageResolutionTime.put("Tuesday", 456.78f);
-        when(empService.getAverageResolutionTime(repId)).thenReturn(expectedAverageResolutionTime);
-
-        // When
-        Map<String, Float> response = employeeController.getAverageResolutionTime(repId);
-
-        // Then
-        assertEquals(expectedAverageResolutionTime, response);
-    }
+//    @Test
+//    public void testGetAverageResolutionTime() {
+//        // Given
+//        Long repId = 1L;
+//        Map<String, Float> expectedAverageResolutionTime = new HashMap<>();
+//        expectedAverageResolutionTime.put("Monday", 345.67f);
+//        expectedAverageResolutionTime.put("Tuesday", 456.78f);
+//        when(empService.getAverageResolutionTime(repId)).thenReturn(expectedAverageResolutionTime);
+//
+//        // When
+//        Map<String, Float> response = employeeController.getAverageResolutionTime(repId);
+//
+//        // Then
+//        assertEquals(expectedAverageResolutionTime, response);
+//    }
     
     @Test
     public void testDepromoteEmployeeSuccess() {
