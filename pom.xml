@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>Manager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Manager</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -103,6 +103,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>Employee</finalName>
 	</build>
 
 </project>
